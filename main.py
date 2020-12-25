@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import requests
-from requests.models import Response
+import datetime
 load_dotenv()
 
 
@@ -43,11 +43,13 @@ headers={
 # print(response.text)
 
 # Post pixel to graph
-hiking_graph_endpoint = f"{graph_endpoint}/{GRAPH_ID}"
+# today = datetime.date.today()
+today = datetime.date(year=2020, month=12, day=5)
+pixel_post_endpoint = f"{graph_endpoint}/{GRAPH_ID}"
 pixel_data = {
-    "date": "20201224",
-    "quantity": "10.0",
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "7.56",
 }
 
-response = requests.post(url=hiking_graph_endpoint, json=pixel_data, headers=headers)
+response = requests.post(url=pixel_post_endpoint, json=pixel_data, headers=headers)
 print(response.text)
