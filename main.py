@@ -42,6 +42,7 @@ headers={
 # response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 # print(response.text)
 
+
 # Post pixel to graph
 # today = datetime.date.today()
 today = datetime.date(year=2020, month=12, day=5)
@@ -54,6 +55,7 @@ pixel_data = {
 # response = requests.post(url=pixel_post_endpoint, json=pixel_data, headers=headers)
 # print(response.text)
 
+
 # Update pixel
 date = datetime.date(year=2020, month=12, day=5)
 date_format = date.strftime("%Y%m%d")
@@ -63,5 +65,12 @@ pixel_update_data = {
     "quantity": "6.57",
 }
 
-response = requests.put(url=pixel_update_endpoint, json=pixel_update_data, headers=headers)
+# response = requests.put(url=pixel_update_endpoint, json=pixel_update_data, headers=headers)
+# print(response.text)
+
+
+# Delete a pixel
+pixel_delete_endpoint = f"{graph_endpoint}/{GRAPH_ID}/{date_format}"
+
+response = requests.delete(url=pixel_delete_endpoint, headers=headers)
 print(response.text)
