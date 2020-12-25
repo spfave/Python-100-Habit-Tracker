@@ -51,5 +51,17 @@ pixel_data = {
     "quantity": "7.56",
 }
 
-response = requests.post(url=pixel_post_endpoint, json=pixel_data, headers=headers)
+# response = requests.post(url=pixel_post_endpoint, json=pixel_data, headers=headers)
+# print(response.text)
+
+# Update pixel
+date = datetime.date(year=2020, month=12, day=5)
+date_format = date.strftime("%Y%m%d")
+
+pixel_update_endpoint = f"{graph_endpoint}/{GRAPH_ID}/{date_format}"
+pixel_update_data = {
+    "quantity": "6.57",
+}
+
+response = requests.put(url=pixel_update_endpoint, json=pixel_update_data, headers=headers)
 print(response.text)
