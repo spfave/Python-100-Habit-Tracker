@@ -1,13 +1,27 @@
+import os
+from dotenv import load_dotenv
 import requests
+load_dotenv()
 
+
+# Constants
+token = os.getenv("TOKEN")
+username = os.getenv("USERNAME")
+
+
+# Endpoint
 pixela_endpoint = "https://pixe.la/v1/users"
+
+
+# Create user
 user_params = {
-    "token": "fa,ZQ8H+4v9;xX?J4~<(7",
-    "username": "seabass721",
+    "token": token,
+    "username": username,
     "agreeTermsOfService": "yes",
     "notMinor": "yes",
 }
-
-# Create user
 # response = requests.post(url=pixela_endpoint, json=user_params)
 # print(response.text)
+
+
+# Create new Pixela graph
