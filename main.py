@@ -25,3 +25,18 @@ user_params = {
 
 
 # Create new Pixela graph
+graph_endpoint = f"{pixela_endpoint}/{username}/graphs"
+graph_config = {
+    "id": "graph1",
+    "name": "Hiking Graph",
+    "unit": "Miles",
+    "type": "float",
+    "color": "momiji",
+}
+
+headers={
+    "X-USER-TOKEN": token,
+}
+
+response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
+print(response.text)
